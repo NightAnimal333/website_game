@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://w5ojdqvntojn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hvmru"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nsuf8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lr7jf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pruxn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nc5ib"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vxth"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lpdts"]
+size = Vector3(8.28668, 0.246582, 8.71509)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.23111, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_hvmru")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_nsuf8")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675084, 1.55189, 0)
+physics_material_override = SubResource("PhysicsMaterial_lr7jf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+transform = Transform3D(1.00664, 0, 0, 0, 1.00664, 0, 0, 0, 1.00664, 0, 0, 0)
+mesh = SubResource("CylinderMesh_pruxn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(1.00664, 0, 0, 0, 1.00664, 0, 0, 0, 1.00664, 0, 0, 0)
+shape = SubResource("CylinderShape3D_nc5ib")
+
+[node name="Ground" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208399, -0.28555, -0.051795)
+gravity_scale = 0.0
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(8.24016, 0, 0, 0, 0.226296, 0, 0, 0, 8.21203, 0, 0, 0)
+mesh = SubResource("BoxMesh_0vxth")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0257263, -0.0397949, 0.0806885)
+shape = SubResource("BoxShape3D_lpdts")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.836535, 0.240757, -0.492185, 0, 0.898288, 0.439406, 0.547914, -0.367579, 0.75145, 0, 2.71587, 8.79688)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8765, 0.481402, 0, -0.481402, 0.8765, 0, 3.15287, 8.6197)
